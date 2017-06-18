@@ -6,12 +6,12 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>トップページ</title>
+  <title>ansibleメモ</title>
   <meta name="description" content="日々何かを調べている者のメモ置き場。
 ">
 
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="/">
+  <link rel="canonical" href="/ansible.html">
   <link rel="alternate" type="application/rss+xml" title="砂場" href="/feed.xml">
 </head>
 
@@ -71,15 +71,134 @@
 
     <div class="page-content">
       <div class="wrapper">
-        <p>このサイトはMarkdownで作成してjekyllでビルドしている。</p>
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
-<h2 id="section">メモ</h2>
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">ansibleメモ</h1>
+    <p class="post-meta"><time datetime="2017-06-17T12:00:00+09:00" itemprop="datePublished">Jun 17, 2017</time></p>
+  </header>
 
-<ul>
-  <li><a href="vagrant.html">Vagrantメモ</a></li>
-  <li><a href="ansible.html">Ansibleメモ</a></li>
-  <li><a href="jekyll.html">jekyllメモ</a></li>
-</ul>
+  <div class="post-content" itemprop="articleBody">
+    <h2 id="homebrew">homebrew</h2>
+
+<p>省略</p>
+
+<h2 id="ansible">Ansible</h2>
+
+<h3 id="section">インストール</h3>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>$ brew install ansible
+</code></pre>
+</div>
+
+<h3 id="section-1">接続先の設定</h3>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>$ mkdir ansible
+$ mkdir ansible/inventory
+$ cd ansible
+$ vi inventory/hosts
+</code></pre>
+</div>
+
+<p>vagrantなどでsshのポート番号をデフォルト値以外にしている場合、ansible_portで指定する</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>[targets]
+127.0.0.1 ansible_port=2222
+</code></pre>
+</div>
+
+<h3 id="section-2">疎通確認</h3>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>$ ansible all -i inventory/hosts -u vagrant -m ping
+127.0.0.1 | SUCCESS =&gt; {
+    "changed": false, 
+    "ping": "pong"
+}
+</code></pre>
+</div>
+
+<h3 id="playbook">Playbook作成</h3>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>$ vi myplaybook.yml
+- hosts: targets
+  become: yes
+  tasks:
+  - name: install git
+    apt:
+      name: git
+      update_cache: yes
+  - name: install cmake
+    apt:
+      name: cmake
+      update_cache: yes
+
+</code></pre>
+</div>
+
+<h3 id="section-3">文法チェック</h3>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>$ ansible-playbook -i hosts myplaybook.yml --syntax-check
+
+playbook: myplaybook.yml
+</code></pre>
+</div>
+
+<h3 id="section-4">タスクリスト表示</h3>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>$  ansible-playbook -i hosts myplaybook.yml --list-tasks
+
+playbook: myplaybook.yml
+
+  play #1 (targets): targets	TAGS: []
+    tasks:
+      install tools	TAGS: []
+</code></pre>
+</div>
+
+<h3 id="dry-run">dry-run</h3>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>$ ansible-playbook -i hosts -u vagrant myplaybook.yml --check
+
+PLAY [targets] *****************************************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [127.0.0.1]
+
+TASK [install git] *************************************************************
+ok: [127.0.0.1]
+
+TASK [install cmake] ***********************************************************
+changed: [127.0.0.1]
+
+PLAY RECAP *********************************************************************
+127.0.0.1                  : ok=3    changed=1    unreachable=0    failed=0 
+</code></pre>
+</div>
+
+<h3 id="section-5">実行</h3>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>ansible-playbook -i hosts -u vagrant myplaybook.yml
+
+PLAY [targets] *****************************************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [127.0.0.1]
+
+TASK [install git] *************************************************************
+ok: [127.0.0.1]
+
+TASK [install cmake] ***********************************************************
+changed: [127.0.0.1]
+
+PLAY RECAP *********************************************************************
+127.0.0.1                  : ok=3    changed=1    unreachable=0    failed=0 
+</code></pre>
+</div>
+
+
+  </div>
+
+</article>
 
       </div>
     </div>

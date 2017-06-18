@@ -6,12 +6,12 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>トップページ</title>
+  <title>vagrantメモ</title>
   <meta name="description" content="日々何かを調べている者のメモ置き場。
 ">
 
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="/">
+  <link rel="canonical" href="/vagrant.html">
   <link rel="alternate" type="application/rss+xml" title="砂場" href="/feed.xml">
 </head>
 
@@ -71,15 +71,72 @@
 
     <div class="page-content">
       <div class="wrapper">
-        <p>このサイトはMarkdownで作成してjekyllでビルドしている。</p>
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
-<h2 id="section">メモ</h2>
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">vagrantメモ</h1>
+    <p class="post-meta"><time datetime="2017-06-17T12:00:00+09:00" itemprop="datePublished">Jun 17, 2017</time></p>
+  </header>
 
-<ul>
-  <li><a href="vagrant.html">Vagrantメモ</a></li>
-  <li><a href="ansible.html">Ansibleメモ</a></li>
-  <li><a href="jekyll.html">jekyllメモ</a></li>
-</ul>
+  <div class="post-content" itemprop="articleBody">
+    <h2 id="homebrew">HomeBrew</h2>
+
+<p>省略</p>
+
+<h2 id="section">インストール</h2>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>$ brew cask install vagrant
+</code></pre>
+</div>
+
+<h2 id="package">Package作成前に行うこと</h2>
+
+<ol>
+  <li>vagrantユーザー作成</li>
+  <li>vagrantをsudoers入り</li>
+  <li>visudoでvagrantを <code class="highlighter-rouge">!requiretty</code> 指定</li>
+  <li>visudoでvagrantを <code class="highlighter-rouge">NOPASSWD: ALL</code>にする</li>
+</ol>
+
+<h2 id="package-1">Package作成</h2>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>$ vagrant package --base &lt;VM名&gt;　--output &lt;Box名&gt;
+</code></pre>
+</div>
+
+<p>時間がかかるのでterminal-notifierやsayを仕込んでおいて他の作業をしよう</p>
+
+<h2 id="box">Box追加</h2>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>$ vagrant box add --name &lt;name&gt; &lt;BoxのパスもしくはURL&gt;
+</code></pre>
+</div>
+
+<p>時間がかかるので(以下略)</p>
+
+<h2 id="vagrantfile">Vagrantfile作成</h2>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>$ vagrant init &lt;name&gt;
+</code></pre>
+</div>
+
+<p>自作のssh鍵を使う場合</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>config.ssh.private_key_path = '/path/to/rsa_key'
+</code></pre>
+</div>
+
+<h2 id="section-1">起動</h2>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>$ vagrant up &lt;name&gt;
+</code></pre>
+</div>
+
+<p>初回は時間がかかる</p>
+
+  </div>
+
+</article>
 
       </div>
     </div>
