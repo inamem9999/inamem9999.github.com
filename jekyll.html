@@ -6,12 +6,12 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>トップページ</title>
+  <title>jekyllメモ</title>
   <meta name="description" content="日々何かを調べている者のメモ置き場。
 ">
 
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="/">
+  <link rel="canonical" href="/jekyll.html">
   <link rel="alternate" type="application/rss+xml" title="砂場" href="/feed.xml">
 </head>
 
@@ -71,15 +71,96 @@
 
     <div class="page-content">
       <div class="wrapper">
-        <p>このサイトはMarkdownで作成してjekyllでビルドしている。</p>
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
-<h2 id="section">メモ</h2>
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">jekyllメモ</h1>
+    <p class="post-meta"><time datetime="2017-06-18T20:38:10+09:00" itemprop="datePublished">Jun 18, 2017</time></p>
+  </header>
 
-<ul>
-  <li><a href="vagrant.html">Vagrantメモ</a></li>
-  <li><a href="ansible.html">Ansibleメモ</a></li>
-  <li><a href="jekyll.html">jekyllメモ</a></li>
-</ul>
+  <div class="post-content" itemprop="articleBody">
+    <h2 id="section">インストールする前</h2>
+
+<h3 id="rvmruby">rvmのインストールと使用するrubyの選択</h3>
+
+<p><a href="http://qiita.com/yukofeb/items/6cad3a6de48dab60889b">このあたり</a>を参考</p>
+
+<h3 id="section-1">インストール</h3>
+
+<p><code class="highlighter-rouge">$ gem install jekyll</code></p>
+
+<h3 id="section-2">サイトの新規作成</h3>
+
+<p><code class="highlighter-rouge">$ jekyll new my-new-site</code></p>
+
+<p>以下のファイルとディレクトリが自動的に作成される</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>_config.yml	_layouts	_sass		css		index.html
+_includes	_posts		about.md	feed.xml
+</code></pre>
+</div>
+
+<h3 id="section-3">サイトのビルド</h3>
+
+<p><code class="highlighter-rouge">$ jekyll build</code> で<code class="highlighter-rouge">./_site</code>に作成。</p>
+
+<p>出力先を指定するには<code class="highlighter-rouge">--destination</code>で指定する</p>
+
+<p><code class="highlighter-rouge">$ jekyll build --destination &lt;destination&gt;</code></p>
+
+<p><code class="highlighter-rouge">--watch</code>オプションで変更を監視し、自動的に再生成を行わせることもできる</p>
+
+<h3 id="section-4">ビルドしたサイトの確認</h3>
+
+<p><code class="highlighter-rouge">$ jekyll serve</code></p>
+
+<p>開発サーバを<code class="highlighter-rouge">http://localhost:4000/</code>で起動する</p>
+
+<p>こんな感じで表示される</p>
+
+<p><img src="images/jekyll_sample.png" alt="Sample" /></p>
+
+<p>faviconが無いと怒られる</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>[2017-06-17 12:28:34] ERROR `/favicon.ico' not found.
+</code></pre>
+</div>
+
+<h3 id="post">postレイアウト指定で</h3>
+
+<p>こんなファイルでビルドすると</p>
+
+<p>sample.md</p>
+
+<figure class="highlight"><pre><code class="language-markdown" data-lang="markdown"><span class="nn">---</span>
+<span class="s">layout</span><span class="pi">:</span> <span class="s">post</span>
+<span class="s">title</span><span class="pi">:</span> <span class="s">サンプル</span>
+<span class="nn">---</span>
+
+サンプル</code></pre></figure>
+
+<p>こんなエラーが出る</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>Generating... 
+Invalid Date: '' is not a valid datetime.
+Liquid Exception: exit in _layouts/post.html
+</code></pre>
+</div>
+
+<p>このときは、<code class="highlighter-rouge">date</code>を指定してやる</p>
+
+<figure class="highlight"><pre><code class="language-markdown" data-lang="markdown"><span class="nn">---</span>
+<span class="s">layout</span><span class="pi">:</span> <span class="s">post</span>
+<span class="s">title</span><span class="pi">:</span> <span class="s">サンプル</span>
+<span class="s">date</span><span class="pi">:</span> <span class="s">2017/06/17 12:30:00 +0900</span>
+<span class="nn">---</span>
+
+サンプル</code></pre></figure>
+
+
+  </div>
+
+</article>
 
       </div>
     </div>
