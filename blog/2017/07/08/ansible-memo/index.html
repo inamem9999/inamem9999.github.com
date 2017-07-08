@@ -5,15 +5,19 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="ja"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>砂場</title>
+  <title>Ansibleメモ - 砂場</title>
   <meta name="author" content="inamem9999">
 
   
-  <meta name="description" content="インストールする前 rvmのインストールと使用するrubyの選択 このあたりを参考 インストール 1
-$ gem install jekyll サイトの新規作成 1
-$ jekyll new my-new-site 以下のファイルとディレクトリが自動的に作成される 1
+  <meta name="description" content="homebrew 省略 Ansible インストール 1
+$ brew install ansible 接続先の設定 1
 2
-_config.yml &hellip;">
+3
+4
+$ mkdir ansible
+$ mkdir ansible/inventory
+$ cd ansible
+$ vi inventory/hosts &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -22,7 +26,7 @@ _config.yml &hellip;">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://inamem9999.github.io/">
+  <link rel="canonical" href="http://inamem9999.github.io/blog/2017/07/08/ansible-memo/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="砂場" type="application/atom+xml">
@@ -68,144 +72,12 @@ _config.yml &hellip;">
 </nav>
   <div id="main">
     <div id="content">
-      <div class="blog-index">
+      <div>
+<article class="hentry" role="article">
   
-  
-  
-    <article>
-      
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2017/07/08/jekyll-memo/">Jekyllメモ</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2017-07-08T16:17:12+09:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>8</span><span class='date-suffix'>th</span>, <span class='date-year'>2017</span></span> <span class='time'>4:17 pm</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2>インストールする前</h2>
-
-<h3>rvmのインストールと使用するrubyの選択</h3>
-
-<p><a href="http://qiita.com/yukofeb/items/6cad3a6de48dab60889b">このあたり</a>を参考</p>
-
-<h3>インストール</h3>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ gem install jekyll</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>サイトの新規作成</h3>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ jekyll new my-new-site</span></code></pre></td></tr></table></div></figure>
-
-
-<p>以下のファイルとディレクトリが自動的に作成される</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>_config.yml  _layouts    _sass       css     index.html
-</span><span class='line'>_includes _posts      about.md    feed.xml</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>サイトのビルド</h3>
-
-<p><code>$ jekyll build</code> で<code>./_site</code>に作成。</p>
-
-<p>出力先を指定するには<code>--destination</code>で指定する</p>
-
-<p><code>$ jekyll build --destination &lt;destination&gt;</code></p>
-
-<p><code>--watch</code>オプションで変更を監視し、自動的に再生成を行わせることもできる</p>
-
-<h3>ビルドしたサイトの確認</h3>
-
-<p><code>$ jekyll serve</code></p>
-
-<p>プレビュー用サーバを<code>http://localhost:4000/</code>で起動する</p>
-
-<p>こんな感じで表示される</p>
-
-<p><img src="/images/jekyll_sample.png" alt="jekyll_sample.png" /></p>
-
-<p>faviconが無いと怒られる</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>[2017-06-17 12:28:34] ERROR `/favicon.ico' not found.</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>postレイアウト指定で</h3>
-
-<p>こんなファイルでビルドすると</p>
-
-<p>sample.md</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>---
-</span><span class='line'>layout: post
-</span><span class='line'>title: サンプル
-</span><span class='line'>---
-</span><span class='line'>
-</span><span class='line'>サンプル
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>こんなエラーが出る</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>Generating... 
-</span><span class='line'>Invalid Date: '' is not a valid datetime.
-</span><span class='line'>Liquid Exception: exit in _layouts/post.html</span></code></pre></td></tr></table></div></figure>
-
-
-<p>このときは、<code>date</code>を指定してやる</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>---
-</span><span class='line'>layout: post
-</span><span class='line'>title: サンプル
-</span><span class='line'>date: 2017/06/17 12:30:00 +0900
-</span><span class='line'>---
-</span><span class='line'>
-</span><span class='line'>サンプル
-</span></code></pre></td></tr></table></div></figure>
-
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2017/07/08/ansible-memo/">Ansibleメモ</a></h1>
+      <h1 class="entry-title">Ansibleメモ</h1>
     
     
       <p class="meta">
@@ -221,7 +93,7 @@ _config.yml &hellip;">
   </header>
 
 
-  <div class="entry-content"><h2>homebrew</h2>
+<div class="entry-content"><h2>homebrew</h2>
 
 <p>省略</p>
 
@@ -394,101 +266,54 @@ _config.yml &hellip;">
 
 
 </div>
-  
-  
 
 
-    </article>
-  
-  
-    <article>
+  <footer>
+    <p class="meta">
       
-  <header>
+  
+
+<span class="byline author vcard">Posted by <span class="fn">inamem9999</span></span>
+
+      
+
+
+
+
+<time class='entry-date' datetime='2017-07-08T16:12:03+09:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>8</span><span class='date-suffix'>th</span>, <span class='date-year'>2017</span></span> <span class='time'>4:12 pm</span></time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/ansible/'>ansible</a>
+  
+</span>
+
+
+    </p>
     
-      <h1 class="entry-title"><a href="/blog/2017/07/08/vagrant-memo/">Vagrantメモ</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2017-07-08T16:05:58+09:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>8</span><span class='date-suffix'>th</span>, <span class='date-year'>2017</span></span> <span class='time'>4:05 pm</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2>HomeBrew</h2>
-
-<p>省略</p>
-
-<h2>インストール</h2>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ brew cask install vagrant</span></code></pre></td></tr></table></div></figure>
-
-
-<h2>Package作成前に行うこと</h2>
-
-<ol>
-<li>vagrantユーザー作成</li>
-<li>vagrantをsudoers入り</li>
-<li>visudoでvagrantを <code>!requiretty</code> 指定</li>
-<li>visudoでvagrantを <code>NOPASSWD: ALL</code>にする</li>
-</ol>
-
-
-<h2>Package作成</h2>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ vagrant package --base &lt;VM名&gt;　--output &lt;Box名&gt;</span></code></pre></td></tr></table></div></figure>
-
-
-<p>時間がかかるのでterminal-notifierやsayを仕込んでおいて他の作業をしよう</p>
-
-<h2>Box追加</h2>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ vagrant box add --name &lt;name&gt; &lt;BoxのパスもしくはURL&gt;</span></code></pre></td></tr></table></div></figure>
-
-
-<p>時間がかかるので(以下略)</p>
-
-<h2>Vagrantfile作成</h2>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ vagrant init &lt;name&gt;</span></code></pre></td></tr></table></div></figure>
-
-
-<p>自作のssh鍵を使う場合</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>config.ssh.private_key_path = '/path/to/rsa_key'</span></code></pre></td></tr></table></div></figure>
-
-
-<h2>起動</h2>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ vagrant up &lt;name&gt;</span></code></pre></td></tr></table></div></figure>
-
-
-<p>初回は時間がかかる</p>
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://inamem9999.github.io/blog/2017/07/08/ansible-memo/" data-via="inamem9999" data-counturl="http://inamem9999.github.io/blog/2017/07/08/ansible-memo/" >Tweet</a>
+  
+  
+  
 </div>
-  
-  
 
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2017/07/08/vagrant-memo/" title="Previous Post: Vagrantメモ">&laquo; Vagrantメモ</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2017/07/08/jekyll-memo/" title="Next Post: jekyllメモ">jekyllメモ &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
 
-    </article>
-  
-  <div class="pagination">
-    
-    <a href="/blog/archives">Blog Archives</a>
-    
-  </div>
 </div>
+
 <aside class="sidebar">
   
     <section>
@@ -542,6 +367,7 @@ _config.yml &hellip;">
 
   
 </aside>
+
 
     </div>
   </div>

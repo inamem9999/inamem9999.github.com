@@ -1,98 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
 
-<!DOCTYPE html>
-<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
-<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
-<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="ja"><!--<![endif]-->
-<head>
-  <meta charset="utf-8">
-  <title>砂場</title>
-  <meta name="author" content="inamem9999">
-
-  
-  <meta name="description" content="インストールする前 rvmのインストールと使用するrubyの選択 このあたりを参考 インストール 1
-$ gem install jekyll サイトの新規作成 1
-$ jekyll new my-new-site 以下のファイルとディレクトリが自動的に作成される 1
-2
-_config.yml &hellip;">
-  
-
-  <!-- http://t.co/dKP3o1e -->
-  <meta name="HandheldFriendly" content="True">
-  <meta name="MobileOptimized" content="320">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  
-  <link rel="canonical" href="http://inamem9999.github.io/">
-  <link href="/favicon.png" rel="icon">
-  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <link href="/atom.xml" rel="alternate" title="砂場" type="application/atom+xml">
-  <script src="/javascripts/modernizr-2.0.js"></script>
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-  <script>!window.jQuery && document.write(unescape('%3Cscript src="/javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
-  <script src="/javascripts/octopress.js" type="text/javascript"></script>
-  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
-<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
-<link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
-
-  
-
-</head>
-
-<body   >
-  <header role="banner"><hgroup>
-  <h1><a href="/">砂場</a></h1>
-  
-    <h2>調べ物用</h2>
-  
-</hgroup>
-
-</header>
-  <nav role="navigation"><ul class="subscription" data-subscription="rss">
-  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
-  
-</ul>
-  
-<form action="https://www.google.com/search" method="get">
-  <fieldset role="search">
-    <input type="hidden" name="sitesearch" value="inamem9999.github.io">
-    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
-  </fieldset>
-</form>
-  
-<ul class="main-navigation">
-  <li><a href="/blog/categories/etc/">etc</a></li>
-  <li><a href="/">Blog</a></li>
-  <li><a href="/blog/archives">Archives</a></li>
-</ul>
-
-</nav>
-  <div id="main">
-    <div id="content">
-      <div class="blog-index">
-  
-  
-  
-    <article>
-      
-  <header>
+  <title><![CDATA[砂場]]></title>
+  <link href="http://inamem9999.github.io/atom.xml" rel="self"/>
+  <link href="http://inamem9999.github.io/"/>
+  <updated>2017-07-08T16:33:39+09:00</updated>
+  <id>http://inamem9999.github.io/</id>
+  <author>
+    <name><![CDATA[inamem9999]]></name>
     
-      <h1 class="entry-title"><a href="/blog/2017/07/08/jekyll-memo/">Jekyllメモ</a></h1>
-    
-    
-      <p class="meta">
-        
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
 
-
-
-
-<time class='entry-date' datetime='2017-07-08T16:17:12+09:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>8</span><span class='date-suffix'>th</span>, <span class='date-year'>2017</span></span> <span class='time'>4:17 pm</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2>インストールする前</h2>
+  
+  <entry>
+    <title type="html"><![CDATA[Jekyllメモ]]></title>
+    <link href="http://inamem9999.github.io/blog/2017/07/08/jekyll-memo/"/>
+    <updated>2017-07-08T16:17:12+09:00</updated>
+    <id>http://inamem9999.github.io/blog/2017/07/08/jekyll-memo</id>
+    <content type="html"><![CDATA[<h2>インストールする前</h2>
 
 <h3>rvmのインストールと使用するrubyの選択</h3>
 
@@ -136,7 +62,7 @@ _config.yml &hellip;">
 
 <p>こんな感じで表示される</p>
 
-<p><img src="/images/jekyll_sample.png" alt="jekyll_sample.png" /></p>
+<p><img src="http://inamem9999.github.io/images/jekyll_sample.png" alt="jekyll_sample.png" /></p>
 
 <p>faviconが無いと怒られる</p>
 
@@ -193,35 +119,15 @@ _config.yml &hellip;">
 </span><span class='line'>サンプル
 </span></code></pre></td></tr></table></div></figure>
 
-</div>
+]]></content>
+  </entry>
   
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2017/07/08/ansible-memo/">Ansibleメモ</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2017-07-08T16:12:03+09:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>8</span><span class='date-suffix'>th</span>, <span class='date-year'>2017</span></span> <span class='time'>4:12 pm</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2>homebrew</h2>
+  <entry>
+    <title type="html"><![CDATA[Ansibleメモ]]></title>
+    <link href="http://inamem9999.github.io/blog/2017/07/08/ansible-memo/"/>
+    <updated>2017-07-08T16:12:03+09:00</updated>
+    <id>http://inamem9999.github.io/blog/2017/07/08/ansible-memo</id>
+    <content type="html"><![CDATA[<h2>homebrew</h2>
 
 <p>省略</p>
 
@@ -393,35 +299,15 @@ _config.yml &hellip;">
 
 
 
-</div>
+]]></content>
+  </entry>
   
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2017/07/08/vagrant-memo/">Vagrantメモ</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2017-07-08T16:05:58+09:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>8</span><span class='date-suffix'>th</span>, <span class='date-year'>2017</span></span> <span class='time'>4:05 pm</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2>HomeBrew</h2>
+  <entry>
+    <title type="html"><![CDATA[Vagrantメモ]]></title>
+    <link href="http://inamem9999.github.io/blog/2017/07/08/vagrant-memo/"/>
+    <updated>2017-07-08T16:05:58+09:00</updated>
+    <id>http://inamem9999.github.io/blog/2017/07/08/vagrant-memo</id>
+    <content type="html"><![CDATA[<h2>HomeBrew</h2>
 
 <p>省略</p>
 
@@ -476,102 +362,7 @@ _config.yml &hellip;">
 
 
 <p>初回は時間がかかる</p>
-</div>
+]]></content>
+  </entry>
   
-  
-
-
-    </article>
-  
-  <div class="pagination">
-    
-    <a href="/blog/archives">Blog Archives</a>
-    
-  </div>
-</div>
-<aside class="sidebar">
-  
-    <section>
-  <h1>Recent Posts</h1>
-  <ul id="recent_posts">
-    
-      <li class="post">
-        <a href="/blog/2017/07/08/jekyll-memo/">Jekyllメモ</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2017/07/08/ansible-memo/">Ansibleメモ</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2017/07/08/vagrant-memo/">Vagrantメモ</a>
-      </li>
-    
-  </ul>
-</section>
-
-<section>
-  <h1>GitHub Repos</h1>
-  <ul id="gh_repos">
-    <li class="loading">Status updating...</li>
-  </ul>
-  
-  <a href="https://github.com/inamem9999">@inamem9999</a> on GitHub
-  
-  <script type="text/javascript">
-    $(document).ready(function(){
-        if (!window.jXHR){
-            var jxhr = document.createElement('script');
-            jxhr.type = 'text/javascript';
-            jxhr.src = '/javascripts/libs/jXHR.js';
-            var s = document.getElementsByTagName('script')[0];
-            s.parentNode.insertBefore(jxhr, s);
-        }
-
-        github.showRepos({
-            user: 'inamem9999',
-            count: 5,
-            skip_forks: true,
-            target: '#gh_repos'
-        });
-    });
-  </script>
-  <script src="/javascripts/github.js" type="text/javascript"> </script>
-</section>
-
-
-  
-</aside>
-
-    </div>
-  </div>
-  <footer role="contentinfo"><p>
-  Copyright &copy; 2017 - inamem9999 -
-  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
-</p>
-
-</footer>
-  
-
-
-
-
-
-
-
-  <script type="text/javascript">
-    (function(){
-      var twitterWidgets = document.createElement('script');
-      twitterWidgets.type = 'text/javascript';
-      twitterWidgets.async = true;
-      twitterWidgets.src = '//platform.twitter.com/widgets.js';
-      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
-    })();
-  </script>
-
-
-
-
-
-</body>
-</html>
+</feed>

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Jekyll | 砂場]]></title>
+  <link href="http://inamem9999.github.io/blog/categories/jekyll/atom.xml" rel="self"/>
+  <link href="http://inamem9999.github.io/"/>
+  <updated>2017-07-08T16:33:39+09:00</updated>
+  <id>http://inamem9999.github.io/</id>
+  <author>
+    <name><![CDATA[inamem9999]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Jekyllメモ]]></title>
+    <link href="http://inamem9999.github.io/blog/2017/07/08/jekyll-memo/"/>
+    <updated>2017-07-08T16:17:12+09:00</updated>
+    <id>http://inamem9999.github.io/blog/2017/07/08/jekyll-memo</id>
+    <content type="html"><![CDATA[<h2>インストールする前</h2>
+
+<h3>rvmのインストールと使用するrubyの選択</h3>
+
+<p><a href="http://qiita.com/yukofeb/items/6cad3a6de48dab60889b">このあたり</a>を参考</p>
+
+<h3>インストール</h3>
+
+<pre><code>$ gem install jekyll
+</code></pre>
+
+<h3>サイトの新規作成</h3>
+
+<pre><code>$ jekyll new my-new-site
+</code></pre>
+
+<p>以下のファイルとディレクトリが自動的に作成される</p>
+
+<pre><code>_config.yml _layouts    _sass       css     index.html
+_includes   _posts      about.md    feed.xml
+</code></pre>
+
+<h3>サイトのビルド</h3>
+
+<p><code>$ jekyll build</code> で<code>./_site</code>に作成。</p>
+
+<p>出力先を指定するには<code>--destination</code>で指定する</p>
+
+<p><code>$ jekyll build --destination &lt;destination&gt;</code></p>
+
+<p><code>--watch</code>オプションで変更を監視し、自動的に再生成を行わせることもできる</p>
+
+<h3>ビルドしたサイトの確認</h3>
+
+<p><code>$ jekyll serve</code></p>
+
+<p>プレビュー用サーバを<code>http://localhost:4000/</code>で起動する</p>
+
+<p>こんな感じで表示される</p>
+
+<p><img src="/images/jekyll_sample.png" alt="jekyll_sample.png" /></p>
+
+<p>faviconが無いと怒られる</p>
+
+<pre><code>[2017-06-17 12:28:34] ERROR `/favicon.ico' not found.
+</code></pre>
+
+<h3>postレイアウト指定で</h3>
+
+<p>こんなファイルでビルドすると</p>
+
+<p>sample.md</p>
+
+<pre><code>---
+layout: post
+title: サンプル
+---
+
+サンプル
+</code></pre>
+
+<p>こんなエラーが出る</p>
+
+<pre><code>Generating... 
+Invalid Date: '' is not a valid datetime.
+Liquid Exception: exit in _layouts/post.html
+</code></pre>
+
+<p>このときは、<code>date</code>を指定してやる</p>
+
+<pre><code>---
+layout: post
+title: サンプル
+date: 2017/06/17 12:30:00 +0900
+---
+
+サンプル
+</code></pre>
+]]></content>
+  </entry>
+  
+</feed>

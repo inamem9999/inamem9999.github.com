@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Vagrant | 砂場]]></title>
+  <link href="http://inamem9999.github.io/blog/categories/vagrant/atom.xml" rel="self"/>
+  <link href="http://inamem9999.github.io/"/>
+  <updated>2017-07-08T16:33:39+09:00</updated>
+  <id>http://inamem9999.github.io/</id>
+  <author>
+    <name><![CDATA[inamem9999]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Vagrantメモ]]></title>
+    <link href="http://inamem9999.github.io/blog/2017/07/08/vagrant-memo/"/>
+    <updated>2017-07-08T16:05:58+09:00</updated>
+    <id>http://inamem9999.github.io/blog/2017/07/08/vagrant-memo</id>
+    <content type="html"><![CDATA[<h2>HomeBrew</h2>
+
+<p>省略</p>
+
+<h2>インストール</h2>
+
+<pre><code>$ brew cask install vagrant
+</code></pre>
+
+<h2>Package作成前に行うこと</h2>
+
+<ol>
+<li>vagrantユーザー作成</li>
+<li>vagrantをsudoers入り</li>
+<li>visudoでvagrantを <code>!requiretty</code> 指定</li>
+<li>visudoでvagrantを <code>NOPASSWD: ALL</code>にする</li>
+</ol>
+
+
+<h2>Package作成</h2>
+
+<pre><code>$ vagrant package --base &lt;VM名&gt;　--output &lt;Box名&gt;
+</code></pre>
+
+<p>時間がかかるのでterminal-notifierやsayを仕込んでおいて他の作業をしよう</p>
+
+<h2>Box追加</h2>
+
+<pre><code>$ vagrant box add --name &lt;name&gt; &lt;BoxのパスもしくはURL&gt;
+</code></pre>
+
+<p>時間がかかるので(以下略)</p>
+
+<h2>Vagrantfile作成</h2>
+
+<pre><code>$ vagrant init &lt;name&gt;
+</code></pre>
+
+<p>自作のssh鍵を使う場合</p>
+
+<pre><code>config.ssh.private_key_path = '/path/to/rsa_key'
+</code></pre>
+
+<h2>起動</h2>
+
+<pre><code>$ vagrant up &lt;name&gt;
+</code></pre>
+
+<p>初回は時間がかかる</p>
+]]></content>
+  </entry>
+  
+</feed>

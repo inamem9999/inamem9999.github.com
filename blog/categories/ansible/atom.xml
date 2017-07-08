@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Ansible | 砂場]]></title>
+  <link href="http://inamem9999.github.io/blog/categories/ansible/atom.xml" rel="self"/>
+  <link href="http://inamem9999.github.io/"/>
+  <updated>2017-07-08T16:33:39+09:00</updated>
+  <id>http://inamem9999.github.io/</id>
+  <author>
+    <name><![CDATA[inamem9999]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Ansibleメモ]]></title>
+    <link href="http://inamem9999.github.io/blog/2017/07/08/ansible-memo/"/>
+    <updated>2017-07-08T16:12:03+09:00</updated>
+    <id>http://inamem9999.github.io/blog/2017/07/08/ansible-memo</id>
+    <content type="html"><![CDATA[<h2>homebrew</h2>
+
+<p>省略</p>
+
+<h2>Ansible</h2>
+
+<h3>インストール</h3>
+
+<pre><code>$ brew install ansible
+</code></pre>
+
+<h3>接続先の設定</h3>
+
+<pre><code>$ mkdir ansible
+$ mkdir ansible/inventory
+$ cd ansible
+$ vi inventory/hosts
+</code></pre>
+
+<p>vagrantなどでsshのポート番号をデフォルト値以外にしている場合、ansible_portで指定する</p>
+
+<pre><code>[targets]
+127.0.0.1 ansible_port=2222
+</code></pre>
+
+<h3>疎通確認</h3>
+
+<pre><code>$ ansible all -i inventory/hosts -u vagrant -m ping
+127.0.0.1 | SUCCESS =&gt; {
+    "changed": false, 
+    "ping": "pong"
+}
+</code></pre>
+
+<h3>Playbook作成</h3>
+
+<pre><code>$ vi myplaybook.yml
+- hosts: targets
+  become: yes
+  tasks:
+  - name: install git
+    apt:
+      name: git
+      update_cache: yes
+  - name: install cmake
+    apt:
+      name: cmake
+      update_cache: yes
+</code></pre>
+
+<h3>文法チェック</h3>
+
+<pre><code>$ ansible-playbook -i hosts myplaybook.yml --syntax-check
+
+playbook: myplaybook.yml
+</code></pre>
+
+<h3>タスクリスト表示</h3>
+
+<pre><code>$  ansible-playbook -i hosts myplaybook.yml --list-tasks
+
+playbook: myplaybook.yml
+
+  play #1 (targets): targets    TAGS: []
+    tasks:
+      install tools TAGS: []
+</code></pre>
+
+<h3>dry-run</h3>
+
+<pre><code>$ ansible-playbook -i hosts -u vagrant myplaybook.yml --check
+
+PLAY [targets] *****************************************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [127.0.0.1]
+
+TASK [install git] *************************************************************
+ok: [127.0.0.1]
+
+TASK [install cmake] ***********************************************************
+changed: [127.0.0.1]
+
+PLAY RECAP *********************************************************************
+127.0.0.1                  : ok=3    changed=1    unreachable=0    failed=0 
+</code></pre>
+
+<h3>実行</h3>
+
+<pre><code>ansible-playbook -i hosts -u vagrant myplaybook.yml
+
+PLAY [targets] *****************************************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [127.0.0.1]
+
+TASK [install git] *************************************************************
+ok: [127.0.0.1]
+
+TASK [install cmake] ***********************************************************
+changed: [127.0.0.1]
+
+PLAY RECAP *********************************************************************
+127.0.0.1                  : ok=3    changed=1    unreachable=0    failed=0 
+</code></pre>
+]]></content>
+  </entry>
+  
+</feed>
