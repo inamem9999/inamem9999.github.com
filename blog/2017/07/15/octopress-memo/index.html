@@ -5,15 +5,14 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="ja"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Vagrantメモ - 砂場</title>
+  <title>Octopressメモ - 砂場</title>
   <meta name="author" content="inamem9999">
 
   
-  <meta name="description" content="HomeBrew 省略 インストール 1
-$ brew cask install vagrant Package作成前に行うこと vagrantユーザー作成
-vagrantをsudoers入り
-visudoでvagrantを !requiretty 指定
-visudoでvagrantを &hellip;">
+  <meta name="description" content="ダウンロード GitHubのリポジトリからダウンロードする 1
+$ git clone https://github.com/imathis/octopress.git セットアップ bundlerが無かったらインストールする 1
+$ gem install bundler 1
+$ bundle &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -22,7 +21,7 @@ visudoでvagrantを &hellip;">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://inamem9999.github.io/blog/2017/07/08/vagrant-memo/">
+  <link rel="canonical" href="http://inamem9999.github.io/blog/2017/07/15/octopress-memo/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="砂場" type="application/atom+xml">
@@ -87,7 +86,7 @@ visudoでvagrantを &hellip;">
   
   <header>
     
-      <h1 class="entry-title">Vagrantメモ</h1>
+      <h1 class="entry-title">Octopressメモ</h1>
     
     
       <p class="meta">
@@ -96,68 +95,78 @@ visudoでvagrantを &hellip;">
 
 
 
-<time class='entry-date' datetime='2017-07-08T16:05:58+09:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>8</span><span class='date-suffix'>th</span>, <span class='date-year'>2017</span></span> <span class='time'>4:05 pm</span></time>
+<time class='entry-date' datetime='2017-07-15T09:46:15+09:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>15</span><span class='date-suffix'>th</span>, <span class='date-year'>2017</span></span> <span class='time'>9:46 am</span></time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><h2>HomeBrew</h2>
+<div class="entry-content"><h2>ダウンロード</h2>
 
-<p>省略</p>
-
-<h2>インストール</h2>
+<p>GitHubのリポジトリからダウンロードする</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ brew cask install vagrant</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ git clone https://github.com/imathis/octopress.git</span></code></pre></td></tr></table></div></figure>
 
 
-<h2>Package作成前に行うこと</h2>
+<h2>セットアップ</h2>
 
-<ol>
-<li>vagrantユーザー作成</li>
-<li>vagrantをsudoers入り</li>
-<li>visudoでvagrantを <code>!requiretty</code> 指定</li>
-<li>visudoでvagrantを <code>NOPASSWD: ALL</code>にする</li>
-</ol>
-
-
-<h2>Package作成</h2>
+<p>bundlerが無かったらインストールする</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ vagrant package --base &lt;VM名&gt;　--output &lt;Box名&gt;</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ gem install bundler</span></code></pre></td></tr></table></div></figure>
 
 
-<p>時間がかかるのでterminal-notifierやsayを仕込んでおいて他の作業をしよう</p>
 
-<h2>Box追加</h2>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ vagrant box add --name &lt;name&gt; &lt;BoxのパスもしくはURL&gt;</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ bundle install</span></code></pre></td></tr></table></div></figure>
 
 
-<p>時間がかかるので(以下略)</p>
+<p><code>_config.yml</code>を編集して、サイト名などの初期情報を設定しておく</p>
 
-<h2>Vagrantfile作成</h2>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ vagrant init &lt;name&gt;</span></code></pre></td></tr></table></div></figure>
-
-
-<p>自作のssh鍵を使う場合</p>
+<p>GitHub pagesへのデプロイ設定</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>config.ssh.private_key_path = '/path/to/rsa_key'</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ rake setup_github_pages</span></code></pre></td></tr></table></div></figure>
 
 
-<h2>起動</h2>
+<h2>ブログエントリーの追加</h2>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ vagrant up &lt;name&gt;</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ rake new_post["title"]</span></code></pre></td></tr></table></div></figure>
 
 
-<p>初回は時間がかかる</p>
+<p><code>source/_posts/YYYY-MM-DD-title.markdown</code>というファイルが出来上がるのでエントリーを編集する</p>
+
+<h2>ブログエントリーじゃないページの追加</h2>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ rake new_page["title"]</span></code></pre></td></tr></table></div></figure>
+
+
+<p><code>source/title/index.markdown</code>というファイルが出来上がるので編集する</p>
+
+<h2>サイトのプレビュー</h2>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ rake preview</span></code></pre></td></tr></table></div></figure>
+
+
+<p>変更したファイルはすぐに検知して自動的に再生成する(後述のサイト生成を行う必要なしに反映される)</p>
+
+<h2>サイト生成</h2>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ rake generate</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>サイトのデプロイ</h2>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ rake deploy</span></code></pre></td></tr></table></div></figure>
+
 </div>
 
 
@@ -173,12 +182,12 @@ visudoでvagrantを &hellip;">
 
 
 
-<time class='entry-date' datetime='2017-07-08T16:05:58+09:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>8</span><span class='date-suffix'>th</span>, <span class='date-year'>2017</span></span> <span class='time'>4:05 pm</span></time>
+<time class='entry-date' datetime='2017-07-15T09:46:15+09:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>15</span><span class='date-suffix'>th</span>, <span class='date-year'>2017</span></span> <span class='time'>9:46 am</span></time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/vagrant/'>vagrant</a>
+    <a class='category' href='/blog/categories/octopress/'>octopress</a>
   
 </span>
 
@@ -187,7 +196,7 @@ visudoでvagrantを &hellip;">
     
       <div class="sharing">
   
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://inamem9999.github.io/blog/2017/07/08/vagrant-memo/" data-via="inamem9999" data-counturl="http://inamem9999.github.io/blog/2017/07/08/vagrant-memo/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://inamem9999.github.io/blog/2017/07/15/octopress-memo/" data-via="inamem9999" data-counturl="http://inamem9999.github.io/blog/2017/07/15/octopress-memo/" >Tweet</a>
   
   
   
@@ -196,8 +205,8 @@ visudoでvagrantを &hellip;">
     
     <p class="meta">
       
+        <a class="basic-alignment left" href="/blog/2017/07/08/jekyll-memo/" title="Previous Post: jekyllメモ">&laquo; jekyllメモ</a>
       
-        <a class="basic-alignment right" href="/blog/2017/07/08/ansible-memo/" title="Next Post: ansibleメモ">ansibleメモ &raquo;</a>
       
     </p>
   </footer>

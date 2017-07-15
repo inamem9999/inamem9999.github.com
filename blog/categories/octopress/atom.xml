@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Octopress | 砂場]]></title>
+  <link href="http://inamem9999.github.io/blog/categories/octopress/atom.xml" rel="self"/>
+  <link href="http://inamem9999.github.io/"/>
+  <updated>2017-07-15T10:55:12+09:00</updated>
+  <id>http://inamem9999.github.io/</id>
+  <author>
+    <name><![CDATA[inamem9999]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Octopressメモ]]></title>
+    <link href="http://inamem9999.github.io/blog/2017/07/15/octopress-memo/"/>
+    <updated>2017-07-15T09:46:15+09:00</updated>
+    <id>http://inamem9999.github.io/blog/2017/07/15/octopress-memo</id>
+    <content type="html"><![CDATA[<h2>ダウンロード</h2>
+
+<p>GitHubのリポジトリからダウンロードする</p>
+
+<pre><code>$ git clone https://github.com/imathis/octopress.git
+</code></pre>
+
+<h2>セットアップ</h2>
+
+<p>bundlerが無かったらインストールする</p>
+
+<pre><code>$ gem install bundler
+</code></pre>
+
+<pre><code>$ bundle install
+</code></pre>
+
+<p><code>_config.yml</code>を編集して、サイト名などの初期情報を設定しておく</p>
+
+<p>GitHub pagesへのデプロイ設定</p>
+
+<pre><code>$ rake setup_github_pages
+</code></pre>
+
+<h2>ブログエントリーの追加</h2>
+
+<pre><code>$ rake new_post["title"]
+</code></pre>
+
+<p><code>source/_posts/YYYY-MM-DD-title.markdown</code>というファイルが出来上がるのでエントリーを編集する</p>
+
+<h2>ブログエントリーじゃないページの追加</h2>
+
+<pre><code>$ rake new_page["title"]
+</code></pre>
+
+<p><code>source/title/index.markdown</code>というファイルが出来上がるので編集する</p>
+
+<h2>サイトのプレビュー</h2>
+
+<pre><code>$ rake preview
+</code></pre>
+
+<p>変更したファイルはすぐに検知して自動的に再生成する(後述のサイト生成を行う必要なしに反映される)</p>
+
+<h2>サイト生成</h2>
+
+<pre><code>$ rake generate
+</code></pre>
+
+<h2>サイトのデプロイ</h2>
+
+<pre><code>$ rake deploy
+</code></pre>
+]]></content>
+  </entry>
+  
+</feed>

@@ -9,11 +9,10 @@
   <meta name="author" content="inamem9999">
 
   
-  <meta name="description" content="インストールする前 rvmのインストールと使用するrubyの選択 このあたりを参考 インストール 1
-$ gem install jekyll サイトの新規作成 1
-$ jekyll new my-new-site 以下のファイルとディレクトリが自動的に作成される 1
-2
-_config.yml &hellip;">
+  <meta name="description" content="ダウンロード GitHubのリポジトリからダウンロードする 1
+$ git clone https://github.com/imathis/octopress.git セットアップ bundlerが無かったらインストールする 1
+$ gem install bundler 1
+$ bundle &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -84,6 +83,99 @@ _config.yml &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2017/07/15/octopress-memo/">Octopressメモ</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2017-07-15T09:46:15+09:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>15</span><span class='date-suffix'>th</span>, <span class='date-year'>2017</span></span> <span class='time'>9:46 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2>ダウンロード</h2>
+
+<p>GitHubのリポジトリからダウンロードする</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ git clone https://github.com/imathis/octopress.git</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>セットアップ</h2>
+
+<p>bundlerが無かったらインストールする</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ gem install bundler</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ bundle install</span></code></pre></td></tr></table></div></figure>
+
+
+<p><code>_config.yml</code>を編集して、サイト名などの初期情報を設定しておく</p>
+
+<p>GitHub pagesへのデプロイ設定</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ rake setup_github_pages</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>ブログエントリーの追加</h2>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ rake new_post["title"]</span></code></pre></td></tr></table></div></figure>
+
+
+<p><code>source/_posts/YYYY-MM-DD-title.markdown</code>というファイルが出来上がるのでエントリーを編集する</p>
+
+<h2>ブログエントリーじゃないページの追加</h2>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ rake new_page["title"]</span></code></pre></td></tr></table></div></figure>
+
+
+<p><code>source/title/index.markdown</code>というファイルが出来上がるので編集する</p>
+
+<h2>サイトのプレビュー</h2>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ rake preview</span></code></pre></td></tr></table></div></figure>
+
+
+<p>変更したファイルはすぐに検知して自動的に再生成する(後述のサイト生成を行う必要なしに反映される)</p>
+
+<h2>サイト生成</h2>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ rake generate</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>サイトのデプロイ</h2>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ rake deploy</span></code></pre></td></tr></table></div></figure>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -508,6 +600,10 @@ _config.yml &hellip;">
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2017/07/15/octopress-memo/">Octopressメモ</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2017/07/08/jekyll-memo/">Jekyllメモ</a>

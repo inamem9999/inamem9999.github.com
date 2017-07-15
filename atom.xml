@@ -4,7 +4,7 @@
   <title><![CDATA[砂場]]></title>
   <link href="http://inamem9999.github.io/atom.xml" rel="self"/>
   <link href="http://inamem9999.github.io/"/>
-  <updated>2017-07-08T17:12:02+09:00</updated>
+  <updated>2017-07-15T10:55:12+09:00</updated>
   <id>http://inamem9999.github.io/</id>
   <author>
     <name><![CDATA[inamem9999]]></name>
@@ -12,6 +12,79 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Octopressメモ]]></title>
+    <link href="http://inamem9999.github.io/blog/2017/07/15/octopress-memo/"/>
+    <updated>2017-07-15T09:46:15+09:00</updated>
+    <id>http://inamem9999.github.io/blog/2017/07/15/octopress-memo</id>
+    <content type="html"><![CDATA[<h2>ダウンロード</h2>
+
+<p>GitHubのリポジトリからダウンロードする</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ git clone https://github.com/imathis/octopress.git</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>セットアップ</h2>
+
+<p>bundlerが無かったらインストールする</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ gem install bundler</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ bundle install</span></code></pre></td></tr></table></div></figure>
+
+
+<p><code>_config.yml</code>を編集して、サイト名などの初期情報を設定しておく</p>
+
+<p>GitHub pagesへのデプロイ設定</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ rake setup_github_pages</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>ブログエントリーの追加</h2>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ rake new_post["title"]</span></code></pre></td></tr></table></div></figure>
+
+
+<p><code>source/_posts/YYYY-MM-DD-title.markdown</code>というファイルが出来上がるのでエントリーを編集する</p>
+
+<h2>ブログエントリーじゃないページの追加</h2>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ rake new_page["title"]</span></code></pre></td></tr></table></div></figure>
+
+
+<p><code>source/title/index.markdown</code>というファイルが出来上がるので編集する</p>
+
+<h2>サイトのプレビュー</h2>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ rake preview</span></code></pre></td></tr></table></div></figure>
+
+
+<p>変更したファイルはすぐに検知して自動的に再生成する(後述のサイト生成を行う必要なしに反映される)</p>
+
+<h2>サイト生成</h2>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ rake generate</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>サイトのデプロイ</h2>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ rake deploy</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Jekyllメモ]]></title>
