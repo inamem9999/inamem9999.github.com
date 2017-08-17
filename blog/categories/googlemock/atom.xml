@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Googlemock | 砂場]]></title>
+  <link href="http://inamem9999.github.io/blog/categories/googlemock/atom.xml" rel="self"/>
+  <link href="http://inamem9999.github.io/"/>
+  <updated>2017-08-17T08:28:59+09:00</updated>
+  <id>http://inamem9999.github.io/</id>
+  <author>
+    <name><![CDATA[inamem9999]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Googletest/mock関連]]></title>
+    <link href="http://inamem9999.github.io/blog/2017/07/23/googletest-create/"/>
+    <updated>2017-07-23T11:50:34+09:00</updated>
+    <id>http://inamem9999.github.io/blog/2017/07/23/googletest-create</id>
+    <content type="html"><![CDATA[<h2>GoogleTest</h2>
+
+<h3>入門ガイド</h3>
+
+<ul>
+<li><a href="https://github.com/google/googletest/blob/master/googletest/docs/Primer.md">公式</a></li>
+<li><a href="http://opencv.jp/googletestdocs/primer.html">日本語訳</a>
+
+<ul>
+<li>日本語訳は元の文書がちょっと古いようで、公式の記載と合わない箇所がある(だいたい同じなので混乱することはない)</li>
+</ul>
+</li>
+</ul>
+
+
+<h3>上級ガイド</h3>
+
+<ul>
+<li><a href="https://github.com/google/googletest/blob/master/googletest/docs/AdvancedGuide.md">公式</a></li>
+<li><a href="http://opencv.jp/googletestdocs/advancedguide.html">日本語訳</a></li>
+</ul>
+
+
+<h2>GoogleMock</h2>
+
+<h3>超入門編</h3>
+
+<ul>
+<li><a href="https://github.com/google/googletest/blob/master/googlemock/docs/ForDummies.md">公式</a></li>
+<li><a href="http://opencv.jp/googlemockdocs/fordummies.html">日本語訳</a>
+
+<ul>
+<li>日本語訳は元の文書がちょっと古いようで、公式の記載と合わない箇所がある(だいたい同じなので混乱することはない)</li>
+</ul>
+</li>
+</ul>
+
+
+<h3>クックブック</h3>
+
+<ul>
+<li><a href="https://github.com/google/googletest/blob/master/googlemock/docs/CookBook.md">公式</a></li>
+<li><a href="http://opencv.jp/googlemockdocs/cookbook.html">日本語訳</a></li>
+</ul>
+
+
+<h3>チートシート</h3>
+
+<ul>
+<li><a href="https://github.com/google/googletest/blob/master/googlemock/docs/CheatSheet.md">公式</a></li>
+<li><a href="http://opencv.jp/googlemockdocs/cheatsheet.html">日本語訳</a></li>
+</ul>
+
+
+<p>大体はクックブックとチートシートを読めば解決するので、以下はクックブックに載っていない使い方(随時追加)</p>
+
+<h2>構造体メンバの値をMatcherに使う</h2>
+
+<p><code>Field</code> Matcherはクラスのメンバだけでなく構造体のメンバにも使える。</p>
+
+<pre><code>typedef struct {
+    int i;
+    float f;
+    char str[1024];
+} Foo_t;
+
+TEST(test_foo, foo_mocktest) {
+    foomock = new FooMock;
+
+    // 引数Foo_t型構造体のメンバiが1のときにマッチ
+    EXPECT_CALL(*foomock, m_printfoo(Field(&amp;Foo_t::i, Eq(1))))
+    .WillRepeatedly(testing::Return(29));
+
+    EXPECT_EQ(29, doFoo());
+    delete foomock;
+}
+</code></pre>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[GoogleTest/Mockのインストール]]></title>
+    <link href="http://inamem9999.github.io/blog/2017/07/23/googletest-install/"/>
+    <updated>2017-07-23T11:21:22+09:00</updated>
+    <id>http://inamem9999.github.io/blog/2017/07/23/googletest-install</id>
+    <content type="html"><![CDATA[<h2>入手</h2>
+
+<p><a href="https://github.com/google/googletest">公式</a>の<code>release</code>から入手</p>
+
+<h2>インストール</h2>
+
+<h3>Windows</h3>
+
+<p>アーカイブ内の<code>googlemock/msvc</code>内に各バージョンのプロジェクトファイルがあるためそれを用いてビルド。Static Libraryが作られる。</p>
+
+<h3>macOS</h3>
+
+<p>アーカイブ内の<code>googletest/xcode</code>にFrameworkをビルドするためのプロジェクトファイルがあるが、1.8.0ではFrameworkに含めるヘッダファイルに不備があるため、使えない。</p>
+
+<p><code>googlemock</code>内でcmakeを実行すればtest、mockともにStatic Library形式でビルドできる。</p>
+
+<h3>Linuxなど</h3>
+
+<p>アーカイブ内の<code>googlemock</code>フォルダでcmakeを実行すればStatic Library形式でビルドできる。</p>
+
+<h2>使い方</h2>
+
+<ol>
+<li>ビルドしたライブラリをプロジェクト内に配置</li>
+<li>テストコードの先頭でヘッダをインクルード</li>
+</ol>
+
+
+<pre><code>#include "gtest/gtest.h"
+#include "gmock/gmock.h"
+</code></pre>
+]]></content>
+  </entry>
+  
+</feed>

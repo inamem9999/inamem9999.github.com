@@ -5,15 +5,14 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="ja"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Vagrantメモ - 砂場</title>
+  <title>Googletest/mock関連 - 砂場</title>
   <meta name="author" content="inamem9999">
 
   
-  <meta name="description" content="HomeBrew 省略 インストール 1
-$ brew cask install vagrant Package作成前に行うこと vagrantユーザー作成
-vagrantをsudoers入り
-visudoでvagrantを !requiretty 指定
-visudoでvagrantを &hellip;">
+  <meta name="description" content="GoogleTest 入門ガイド 公式
+日本語訳 日本語訳は元の文書がちょっと古いようで、公式の記載と合わない箇所がある(だいたい同じなので混乱することはない) 上級ガイド 公式
+日本語訳 GoogleMock 超入門編 公式
+日本語訳 日本語訳は元の文書がちょっと古いようで、 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -22,7 +21,7 @@ visudoでvagrantを &hellip;">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://inamem9999.github.io/blog/2017/07/08/vagrant-memo/">
+  <link rel="canonical" href="http://inamem9999.github.io/blog/2017/07/23/googletest-create/">
   <link href="/favicon.ico" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="砂場" type="application/atom+xml">
@@ -87,7 +86,7 @@ visudoでvagrantを &hellip;">
   
   <header>
     
-      <h1 class="entry-title">Vagrantメモ</h1>
+      <h1 class="entry-title">Googletest/mock関連</h1>
     
     
       <p class="meta">
@@ -96,68 +95,106 @@ visudoでvagrantを &hellip;">
 
 
 
-<time class='entry-date' datetime='2017-07-08T16:05:58+09:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>8</span><span class='date-suffix'>th</span>, <span class='date-year'>2017</span></span> <span class='time'>4:05 pm</span></time>
+<time class='entry-date' datetime='2017-07-23T11:50:34+09:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>23</span><span class='date-suffix'>rd</span>, <span class='date-year'>2017</span></span> <span class='time'>11:50 am</span></time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><h2>HomeBrew</h2>
+<div class="entry-content"><h2>GoogleTest</h2>
 
-<p>省略</p>
+<h3>入門ガイド</h3>
 
-<h2>インストール</h2>
+<ul>
+<li><a href="https://github.com/google/googletest/blob/master/googletest/docs/Primer.md">公式</a></li>
+<li><a href="http://opencv.jp/googletestdocs/primer.html">日本語訳</a>
+
+<ul>
+<li>日本語訳は元の文書がちょっと古いようで、公式の記載と合わない箇所がある(だいたい同じなので混乱することはない)</li>
+</ul>
+</li>
+</ul>
+
+
+<h3>上級ガイド</h3>
+
+<ul>
+<li><a href="https://github.com/google/googletest/blob/master/googletest/docs/AdvancedGuide.md">公式</a></li>
+<li><a href="http://opencv.jp/googletestdocs/advancedguide.html">日本語訳</a></li>
+</ul>
+
+
+<h2>GoogleMock</h2>
+
+<h3>超入門編</h3>
+
+<ul>
+<li><a href="https://github.com/google/googletest/blob/master/googlemock/docs/ForDummies.md">公式</a></li>
+<li><a href="http://opencv.jp/googlemockdocs/fordummies.html">日本語訳</a>
+
+<ul>
+<li>日本語訳は元の文書がちょっと古いようで、公式の記載と合わない箇所がある(だいたい同じなので混乱することはない)</li>
+</ul>
+</li>
+</ul>
+
+
+<h3>クックブック</h3>
+
+<ul>
+<li><a href="https://github.com/google/googletest/blob/master/googlemock/docs/CookBook.md">公式</a></li>
+<li><a href="http://opencv.jp/googlemockdocs/cookbook.html">日本語訳</a></li>
+</ul>
+
+
+<h3>チートシート</h3>
+
+<ul>
+<li><a href="https://github.com/google/googletest/blob/master/googlemock/docs/CheatSheet.md">公式</a></li>
+<li><a href="http://opencv.jp/googlemockdocs/cheatsheet.html">日本語訳</a></li>
+</ul>
+
+
+<p>大体はクックブックとチートシートを読めば解決するので、以下はクックブックに載っていない使い方(随時追加)</p>
+
+<h2>構造体メンバの値をMatcherに使う</h2>
+
+<p><code>Field</code> Matcherはクラスのメンバだけでなく構造体のメンバにも使える。</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ brew cask install vagrant</span></code></pre></td></tr></table></div></figure>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>typedef struct {
+</span><span class='line'>    int i;
+</span><span class='line'>    float f;
+</span><span class='line'>    char str[1024];
+</span><span class='line'>} Foo_t;
+</span><span class='line'>
+</span><span class='line'>TEST(test_foo, foo_mocktest) {
+</span><span class='line'>    foomock = new FooMock;
+</span><span class='line'>
+</span><span class='line'>    // 引数Foo_t型構造体のメンバiが1のときにマッチ
+</span><span class='line'>    EXPECT_CALL(*foomock, m_printfoo(Field(&Foo_t::i, Eq(1))))
+</span><span class='line'>    .WillRepeatedly(testing::Return(29));
+</span><span class='line'>    
+</span><span class='line'>    EXPECT_EQ(29, doFoo());
+</span><span class='line'>    delete foomock;
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
 
-
-<h2>Package作成前に行うこと</h2>
-
-<ol>
-<li>vagrantユーザー作成</li>
-<li>vagrantをsudoers入り</li>
-<li>visudoでvagrantを <code>!requiretty</code> 指定</li>
-<li>visudoでvagrantを <code>NOPASSWD: ALL</code>にする</li>
-</ol>
-
-
-<h2>Package作成</h2>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ vagrant package --base &lt;VM名&gt;　--output &lt;Box名&gt;</span></code></pre></td></tr></table></div></figure>
-
-
-<p>時間がかかるのでterminal-notifierやsayを仕込んでおいて他の作業をしよう</p>
-
-<h2>Box追加</h2>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ vagrant box add --name &lt;name&gt; &lt;BoxのパスもしくはURL&gt;</span></code></pre></td></tr></table></div></figure>
-
-
-<p>時間がかかるので(以下略)</p>
-
-<h2>Vagrantfile作成</h2>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ vagrant init &lt;name&gt;</span></code></pre></td></tr></table></div></figure>
-
-
-<p>自作のssh鍵を使う場合</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>config.ssh.private_key_path = '/path/to/rsa_key'</span></code></pre></td></tr></table></div></figure>
-
-
-<h2>起動</h2>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ vagrant up &lt;name&gt;</span></code></pre></td></tr></table></div></figure>
-
-
-<p>初回は時間がかかる</p>
 </div>
 
 
@@ -173,12 +210,12 @@ visudoでvagrantを &hellip;">
 
 
 
-<time class='entry-date' datetime='2017-07-08T16:05:58+09:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>8</span><span class='date-suffix'>th</span>, <span class='date-year'>2017</span></span> <span class='time'>4:05 pm</span></time>
+<time class='entry-date' datetime='2017-07-23T11:50:34+09:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>23</span><span class='date-suffix'>rd</span>, <span class='date-year'>2017</span></span> <span class='time'>11:50 am</span></time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/vagrant/'>vagrant</a>
+    <a class='category' href='/blog/categories/googlemock/'>googlemock</a>, <a class='category' href='/blog/categories/googletest/'>googletest</a>
   
 </span>
 
@@ -187,7 +224,7 @@ visudoでvagrantを &hellip;">
     
       <div class="sharing">
   
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://inamem9999.github.io/blog/2017/07/08/vagrant-memo/" data-via="inamem9999" data-counturl="http://inamem9999.github.io/blog/2017/07/08/vagrant-memo/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://inamem9999.github.io/blog/2017/07/23/googletest-create/" data-via="inamem9999" data-counturl="http://inamem9999.github.io/blog/2017/07/23/googletest-create/" >Tweet</a>
   
   
   
@@ -196,8 +233,8 @@ visudoでvagrantを &hellip;">
     
     <p class="meta">
       
+        <a class="basic-alignment left" href="/blog/2017/07/23/googletest-install/" title="Previous Post: GoogleTest/Mockのインストール">&laquo; GoogleTest/Mockのインストール</a>
       
-        <a class="basic-alignment right" href="/blog/2017/07/08/ansible-memo/" title="Next Post: ansibleメモ">ansibleメモ &raquo;</a>
       
     </p>
   </footer>

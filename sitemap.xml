@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
+<loc>http://inamem9999.github.io/blog/2017/07/23/googletest-create/</loc>
+<lastmod>2017-07-23T11:50:34+09:00</lastmod>
+</url>
+<url>
+<loc>http://inamem9999.github.io/blog/2017/07/23/googletest-install/</loc>
+<lastmod>2017-07-23T11:21:22+09:00</lastmod>
+</url>
+<url>
 <loc>http://inamem9999.github.io/blog/2017/07/15/octopress-memo/</loc>
 <lastmod>2017-07-15T09:46:15+09:00</lastmod>
 </url>
@@ -33,5 +41,11 @@
 </url>
 <url>
 <loc>http://inamem9999.github.io/blog/categories/octopress/</loc>
+</url>
+<url>
+<loc>http://inamem9999.github.io/blog/categories/googletest/</loc>
+</url>
+<url>
+<loc>http://inamem9999.github.io/blog/categories/googlemock/</loc>
 </url>
 </urlset>

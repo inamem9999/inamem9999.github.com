@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="ja"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Category: Octopress - 砂場</title>
+  <title>GoogleTest/Mockのインストール - 砂場</title>
   <meta name="author" content="inamem9999">
 
   
-  <meta name="description" content="Category: octopress">
+  <meta name="description" content="入手 公式のreleaseから入手 インストール Windows アーカイブ内のgooglemock/msvc内に各バージョンのプロジェクトファイルがあるためそれを用いてビルド。Static Libraryが作られる。 macOS アーカイブ内のgoogletest/ &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://inamem9999.github.io/blog/categories/octopress/">
+  <link rel="canonical" href="http://inamem9999.github.io/blog/2017/07/23/googletest-install/">
   <link href="/favicon.ico" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="砂場" type="application/atom+xml">
@@ -79,35 +79,106 @@
   <div id="main">
     <div id="content">
       <div>
-<article role="article">
+<article class="hentry" role="article">
   
   <header>
-    <h1 class="entry-title">Category: Octopress</h1>
+    
+      <h1 class="entry-title">GoogleTest/Mockのインストール</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2017-07-23T11:21:22+09:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>23</span><span class='date-suffix'>rd</span>, <span class='date-year'>2017</span></span> <span class='time'>11:21 am</span></time>
+        
+      </p>
     
   </header>
-  
-  <div id="blog-archives" class="category">
 
 
+<div class="entry-content"><h2>入手</h2>
 
-  
-  <h2>2017</h2>
+<p><a href="https://github.com/google/googletest">公式</a>の<code>release</code>から入手</p>
 
-<article>
-  
-<h1><a href="/blog/2017/07/15/octopress-memo/">Octopressメモ</a></h1>
-<time datetime="2017-07-15T09:46:15+09:00" pubdate><span class='month'>Jul</span> <span class='day'>15</span> <span class='year'>2017</span></time>
+<h2>インストール</h2>
 
-<footer>
-  <span class="categories">posted in <a class='category' href='/blog/categories/octopress/'>octopress</a></span>
-</footer>
+<h3>Windows</h3>
+
+<p>アーカイブ内の<code>googlemock/msvc</code>内に各バージョンのプロジェクトファイルがあるためそれを用いてビルド。Static Libraryが作られる。</p>
+
+<h3>macOS</h3>
+
+<p>アーカイブ内の<code>googletest/xcode</code>にFrameworkをビルドするためのプロジェクトファイルがあるが、1.8.0ではFrameworkに含めるヘッダファイルに不備があるため、使えない。</p>
+
+<p><code>googlemock</code>内でcmakeを実行すればtest、mockともにStatic Library形式でビルドできる。</p>
+
+<h3>Linuxなど</h3>
+
+<p>アーカイブ内の<code>googlemock</code>フォルダでcmakeを実行すればStatic Library形式でビルドできる。</p>
+
+<h2>使い方</h2>
+
+<ol>
+<li>ビルドしたライブラリをプロジェクト内に配置</li>
+<li>テストコードの先頭でヘッダをインクルード</li>
+</ol>
 
 
-</article>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>#include "gtest/gtest.h"
+</span><span class='line'>#include "gmock/gmock.h"</span></code></pre></td></tr></table></div></figure>
+
+
 
 </div>
 
+
+  <footer>
+    <p class="meta">
+      
   
+
+<span class="byline author vcard">Posted by <span class="fn">inamem9999</span></span>
+
+      
+
+
+
+
+<time class='entry-date' datetime='2017-07-23T11:21:22+09:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>23</span><span class='date-suffix'>rd</span>, <span class='date-year'>2017</span></span> <span class='time'>11:21 am</span></time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/googlemock/'>googlemock</a>, <a class='category' href='/blog/categories/googletest/'>googletest</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://inamem9999.github.io/blog/2017/07/23/googletest-install/" data-via="inamem9999" data-counturl="http://inamem9999.github.io/blog/2017/07/23/googletest-install/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2017/07/15/octopress-memo/" title="Previous Post: Octopressメモ">&laquo; Octopressメモ</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2017/07/23/googletest-create/" title="Next Post: googletest/mock関連">googletest/mock関連 &raquo;</a>
+      
+    </p>
+  </footer>
 </article>
 
 </div>
